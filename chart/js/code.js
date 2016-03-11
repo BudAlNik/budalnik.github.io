@@ -54,8 +54,18 @@ function drawByInput() {
  	draw([sz1, sz2, sz3]);
 }
 
+function savePicture() {
+ 	img = canvas.toDataURL("image/png");
+}    
+
 function init() {
  	canvas = document.getElementById('canvas');
  	context = canvas.getContext('2d');
  	draw([1, 0.5, 0.3]);
+
+  	function download() {
+        var dt = canvas.toDataURL("image/png");
+        this.href = dt; //this may not work in the future..
+    }
+    document.getElementById('download').addEventListener('click', download, false);
 }
